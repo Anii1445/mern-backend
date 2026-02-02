@@ -14,7 +14,7 @@ const errorMiddleware = require("./middlewares/error-middleware")
 
 // ------------ Handling cors policy issues ----------- //
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173","https://firstfitness.vercel.app"],
     methods: "GET, POST, DELETE, PUT, PATCH, HEAD",
     credentials: true
 }

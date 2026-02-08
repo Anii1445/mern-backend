@@ -1,3 +1,4 @@
+router.route("/getProductVariantByID/:id").get(authMiddleware, adminMiddleware, productControllers.getProductVariantByID);
 const express = require("express");
 const router = express.Router();
 const adminControllers = require("../controllers/admin-controllers");

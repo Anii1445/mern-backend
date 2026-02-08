@@ -629,7 +629,7 @@ try {
 const getProductVariantByID = async (req, res) => {
   try {
     const { id } = req.params;
-    const response = await Product.findById(id);
+    const response = await Product.findById(id).select("variant");
 
     if(!response){
       res.status(404).json("error");

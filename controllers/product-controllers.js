@@ -629,13 +629,13 @@ try {
 const getProductVariantByID = async (req, res) => {
   try {
     const { id } = req.params;
-    const response = await Product.findById(id).select("variant");
+    const response = await Product.findById(id);
 
     if(!response){
       res.status(404).json("error");
     }
 
-    res.status(200).json(response);
+    res.status(200).json(response.variant);
   } catch (error) {
     console.log(error);
   }

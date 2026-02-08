@@ -1,4 +1,3 @@
-router.route("/getProductVariantByID/:id").get(authMiddleware, adminMiddleware, productControllers.getProductVariantByID);
 const express = require("express");
 const router = express.Router();
 const adminControllers = require("../controllers/admin-controllers");
@@ -25,5 +24,6 @@ router.route("/getAllOrders").get(authMiddleware, adminMiddleware, orderControll
 router.route("/getOrderByUser/:id").get(authMiddleware, adminMiddleware, orderControllers.getOrderByUser);
 router.route("/getOrderById/:id").get(authMiddleware, adminMiddleware, orderControllers.orderById);
 router.route("/getAllProductsList").get(authMiddleware, adminMiddleware, productControllers.getAllProduct);
+router.route("/getProductVariantByID/:id").get(authMiddleware, adminMiddleware, productControllers.getProductVariantByID);
 
 module.exports = router;

@@ -646,7 +646,7 @@ module.exports = {
   deleteWishlistByProductID,
   listSortProduct,
   search,
-  // searchProduct,
+  getProductVariantByID,
   getProductWithReviewsSorting,
   AllProductReview
 };

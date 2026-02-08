@@ -598,7 +598,21 @@ const getProductWithReviewsSorting = async (req, res) => {
 
 const getAllProduct = async (req, res, next) => {
 try {
-  const response = await Product.find();
+  const { name } = req.query;
+
+  let filter = {};
+
+  if(name){
+    filter={
+      $or : [
+             {name: { $regex: name, $options: "i" }},
+             { brand: { $regex: name, $options: "i" }},
+             { category: { $regex: name, $options: "i" }},
+            ]
+      }
+  }
+  const response = await Product.find(filter);
+
   if(!response){
     res.status(404).json("error from server");
   }
@@ -611,6 +625,23 @@ try {
   next();
 }
 }
+
+const getProductVariantByID = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const response = await Product.findById(id);
+
+    if(!response){
+      res.status(404).json("error");
+    }
+
+    res.status(200).json(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
 
 module.exports = {
   allProduct,
@@ -630,6 +661,7 @@ module.exports = {
   deleteWishlistByProductID,
   listSortProduct,
   search,
+  getProductVariantByID,
   getProductWithReviewsSorting,
   AllProductReview
 };

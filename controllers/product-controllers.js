@@ -596,6 +596,23 @@ const getProductWithReviewsSorting = async (req, res) => {
 };
 
 
+const getAllProduct = async (req, res, next) => {
+try {
+  const response = await Product.find();
+  if(!response){
+    res.status(404).json("error from server");
+  }
+
+  res.status(200).json(response); 
+ 
+} catch (error) {
+  res.status(404).json(error)
+  console.log(error);
+  next();
+}
+}
+
+
 
 module.exports = {
   allProduct,
@@ -607,7 +624,7 @@ module.exports = {
   productWeight,
   productBrand,
   productReview,
-  // getAllProductReview,
+  getAllProduct,
   getWishlists,
   deleteWishlist,
   productJoin,

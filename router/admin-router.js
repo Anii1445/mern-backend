@@ -23,5 +23,6 @@ router.route("/editUserData/:id").patch(authMiddleware, adminMiddleware, validat
 router.route("/getAllOrders").get(authMiddleware, adminMiddleware, orderControllers.getAllOrders);
 router.route("/getOrderByUser/:id").get(authMiddleware, adminMiddleware, orderControllers.getOrderByUser);
 router.route("/getOrderById/:id").get(authMiddleware, adminMiddleware, orderControllers.orderById);
+router.route("/getAllProductsList").get(authMiddleware, adminMiddleware, productControllers.getAllProduct);
 
 module.exports = router;

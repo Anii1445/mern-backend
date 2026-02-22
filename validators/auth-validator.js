@@ -3,7 +3,7 @@ const joi = require("joi");
 //creating an object schema for validation
 const signupSchema = joi.object({
   name: joi.string().min(3).max(20).required(),
-  email: joi.string().min(5).email().required(),
+  email: joi.string().min(5).email().lowercase().required(),
   phone: joi
     .string()
     .pattern(/^[6-9]\d{9}$/)

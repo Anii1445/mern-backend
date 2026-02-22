@@ -59,7 +59,17 @@ const variantSchemaJoi = joi.object({
     }
   ),
 
-  flavour: joi.string().allow("").optional(),
+  flavour: joi.string().empty("").when(
+    joi.ref("/category"),
+    {
+      is: "Workout Essentials",
+      then: joi.optional(),
+      otherwise: joi.required().messages({
+        "any.required": "Flavour is required",
+        "string.base": "Flavour cannot be empty",
+      }),
+    }
+  ),
 
   inStock: joi.number().integer().min(0).required().messages({
     "any.required": "Number of stock is required",

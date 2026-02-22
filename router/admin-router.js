@@ -9,11 +9,11 @@ const orderControllers = require("../controllers/order-controllers");
 const upload = require("../utils/uploads")
 const validate = require("../middlewares/validate-middleware")
 const joiSchema = require("../validators/auth-validator");
-
+const parseVariantMiddleware = require("../middlewares/parseVariant-middleware")
 
 router.route("/users").get(authMiddleware, adminMiddleware, adminControllers.getAllUsers);
 router.route("/user/delete/:id").delete(authMiddleware, adminMiddleware, adminControllers.deleteUser)
-router.route("/add/product").post(authMiddleware, adminMiddleware, upload.array("images", 100), validate(joiSchema.productSchema), productControllers.createProduct);
+router.route("/add/product").post(authMiddleware, adminMiddleware, upload.array("images", 100), parseVariantMiddleware, validate(joiSchema.productSchema), productControllers.createProduct);
 router.route("/category").get(authMiddleware, adminMiddleware, productControllers.productCategory);
 router.route("/flavour").get(authMiddleware, adminMiddleware, productControllers.productFlavour);
 router.route("/weight").get(authMiddleware, adminMiddleware, productControllers.productWeight);

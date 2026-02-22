@@ -2,13 +2,14 @@ const { required } = require("joi");
 const { Schema, model } = require("mongoose");
 
 const variantSchema = new Schema({
-        weight: {type: Number, required: true},
-        flavour: {type: String, required: true},
-        inStock: {type: Number, required: true},
+        weight: {type: Number},
+        flavour: {type: String},
+        inStock: {type: Number},
         mrp: {type: Number, required: true},
         price: {type: Number, required: true},
         image: [{type: String, required: true}]
-    })
+    },
+{timestamps: true})
 
 const productSchema = new Schema({
     

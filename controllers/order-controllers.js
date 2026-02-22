@@ -1,5 +1,6 @@
 const { Cart } = require("../models/cart-model");
 const Order = require("../models/orders-model");
+const { Product } = require("../models/product-model")
 const mongoose = require("mongoose");
 
 
@@ -21,6 +22,20 @@ const createOrder = async (req, res) => {
       message: "Order placed successfully",
       response,
     });
+
+    for (const item of items) {
+      console.log(item)
+      const result = await Product.updateOne(
+        {
+          _id: item.product_id,
+          "variant._id": item.variant_id,
+          "variant.inStock": { $gte: item.product_qty },
+        },
+        {
+          $inc: { "variant.$.inStock": -item.product_qty },
+        },
+      );
+    }
      } catch (error) {
         console.log(error);
         res.status(500).json({ msg: "Server error" });

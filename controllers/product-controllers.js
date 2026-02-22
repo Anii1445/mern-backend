@@ -48,12 +48,9 @@ const createProduct = async (req, res) => {
      // Images uploaded to cloudinary
     const imageUrls = req.files.map((file) => file.path);
 
-    // Parse variants (sent as JSON string)
-    const parsedVariants = JSON.parse(variant);
-
     // Attach images to correct variant
     let imageIndex = 0;
-    parsedVariants.forEach((v) => {
+    variant.forEach((v) => {
       const imageCount = v.image.length;
       v.image = imageUrls.slice(imageIndex, imageIndex + imageCount);
       imageIndex += imageCount;
@@ -74,7 +71,7 @@ const createProduct = async (req, res) => {
     fssai,
     proteinPerScoop,
     servingSize,
-      variant : parsedVariants
+      variant
     });
 
     if (products) {

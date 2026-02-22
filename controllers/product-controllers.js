@@ -627,8 +627,7 @@ try {
 }
 }
 
-<<<<<<< HEAD
-=======
+
 const getProductVariantByID = async (req, res) => {
   try {
     const { id } = req.params;
@@ -643,8 +642,6 @@ const getProductVariantByID = async (req, res) => {
     console.log(error);
   }
 }
-
->>>>>>> aa64f1dbcf88e2f25447a1b60685a889f2c2b289
 
 
 module.exports = {

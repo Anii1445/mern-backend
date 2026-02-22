@@ -73,7 +73,7 @@ const variantSchemaJoi = joi.object({
 
   inStock: joi.number().integer().min(0).required().messages({
     "any.required": "Number of stock is required",
-    "number.base": "Number of stock must be a number",
+    "number.base": "Number of stock must be a number and is required",
     "number.min": "Number of stock cannot be negative",
   }),
 

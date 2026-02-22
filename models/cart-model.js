@@ -2,15 +2,16 @@ const { Schema, model, mongoose } = require("mongoose");
 
 const cartSchema = new Schema({
 
-    user_id: {type: String, required: true},
-    product_id: {type: String, required: true},
-    variant_id: {type: mongoose.Schema.Types.ObjectId, required: true},
-    product_price: {type: Number, required: true},
-    product_weight: {type: Number, required: true},
-    product_flavour: {type: String, required: true},
-    product_mrp: {type: Number, required:true},
-    product_qty: {type: Number, required: true},
-    product_img: []
+    user_id: {type: String},
+    product_id: {type: String},
+    variant_id: {type: mongoose.Schema.Types.ObjectId},
+    product_price: {type: Number},
+    product_weight: {type: Number},
+    product_flavour: {type: String},
+    product_mrp: {type: Number},
+    product_qty: {type: Number},
+    product_img: [],
+    quantity: {type: Number}
 })
 
 const stateSchema = new Schema({

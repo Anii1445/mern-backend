@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 
 const addCart = async (req, res) => {
     try {
-        const{ user_id, product_id, variant_id, product_price, product_weight, product_flavour, product_mrp, product_qty, product_img } = req.body;
-        const addTocart = await Cart.create({ user_id, product_id, variant_id, product_price, product_weight, product_flavour, product_mrp,product_qty, product_img });
+        const{ user_id, product_id, variant_id, product_price, product_weight, product_flavour, product_mrp, product_qty, product_img, quantity } = req.body;
+        const addTocart = await Cart.create({ user_id, product_id, variant_id, product_price, product_weight, product_flavour, product_mrp,product_qty, product_img, quantity });
 
         if(!addTocart){
             return res.status(404).json({msg:"Not added!"});

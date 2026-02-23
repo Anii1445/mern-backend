@@ -169,9 +169,9 @@ const productWeight = async (req, res) => {
 
 const productReview = async (req, res) => {
   try {
-    const { user, product, variant_id, cust_rating, cust_title, cust_description, product_flavour, product_weight } = req.body;
+    const { user, product, variant_id, cust_rating, cust_title, cust_description, product_flavour, product_weight, quantity } = req.body;
     const response = await Product_Review.create({ user, product, variant_id, cust_rating, cust_title, 
-                                   cust_description, product_flavour, product_weight });
+                                   cust_description, product_flavour, product_weight, quantity });
                                    
     if(!response){
       return res.status(400).json({ error: "Review Not Published"});

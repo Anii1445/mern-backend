@@ -31,9 +31,12 @@ const reviewSchema = joi.object({
   messages({ "number.base": "Rating is required", 
     "number.empty": "Rating cannot be empty", 
     "any.required": "Rating is required" }), 
-  cust_title: joi.string().min(5).required().messages({ "string.base": "Title is required", "string.empty": "Title cannot be empty", "any.required": "Title is required", }), cust_description: joi.string().min(6).required().messages({ "string.base": "Description is required", "string.empty": "Description cannot be empty", "any.required": "Description is required", }), 
-  product_flavour: joi.string().required(), 
-  product_weight: joi.number().required(), });
+  cust_title: joi.string().min(5).required().messages({ "string.base": "Title is required", "string.empty": "Title cannot be empty", "any.required": "Title is required", }), 
+  cust_description: joi.string().min(6).required().messages({ "string.base": "Description is required", "string.empty": "Description cannot be empty", "any.required": "Description is required", }), 
+  product_flavour: joi.string().empty("").optional(), 
+  product_weight: joi.number().empty("").optional(),
+  quantity: joi.number().empty("").optional()
+ });
 
 const variantSchemaJoi = joi.object({
   weight: joi.number().integer().min(0).empty("").when(
